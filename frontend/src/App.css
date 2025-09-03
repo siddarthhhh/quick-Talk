@@ -1,0 +1,43 @@
+/* App.css */
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Background: image + semi-transparent gradient overlay */
+  background: 
+    url("./login_bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  font-family: 'Work Sans', sans-serif;
+
+  /* Animated gradient overlay */
+  animation: gradientShift 20s ease infinite;
+}
+
+/* Gradient animation for subtle movement */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hide default scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Optional custom scrollbar */
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.281);
+}
+
+/* Hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

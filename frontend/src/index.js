@@ -14,8 +14,8 @@ ReactDOM.render(
     <BrowserRouter>
 
       <ChakraProvider>
-      <Button colorScheme="teal">Test Chakra</Button>
-          <App /> 
+      {/* <Button colorScheme="teal">Test Chakra</Button> */}
+           <App / >
       </ChakraProvider>
 
     </BrowserRouter>
