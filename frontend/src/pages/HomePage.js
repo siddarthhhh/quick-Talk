@@ -1,30 +1,31 @@
-import React, { useEffect } from "react";
 import {
   Box,
   Container,
-  // Tab,
+  Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
   Text,
 } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom"; // v5
-// import Login from "../components/Authentication/Login";
-// import Signup from "../components/Authentication/Signup";
+import { useEffect } from "react";
+import { useHistory } from "react-router";
+import Login from "../components/Authentication/Login";
+import Signup from "../components/Authentication/Signup";
 
 function Homepage() {
   const history = useHistory();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
+
     if (user) history.push("/chats");
   }, [history]);
 
   return (
     <Container maxW="xl" centerContent>
       <Box
-        display="flex"
+        d="flex"
         justifyContent="center"
         p={3}
         bg="white"
@@ -33,24 +34,22 @@ function Homepage() {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text fontSize="4xl" fontFamily="Work Sans">
-          Quick-Talk
+        <Text fontSize="4xl" fontFamily="Work sans">
+          Talk-A-Tive
         </Text>
       </Box>
-
       <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
         <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
-            {/* <Tab>Login</Tab>
-            <Tab>Sign Up</Tab> */}
+            <Tab>Login</Tab>
+            <Tab>Sign Up</Tab>
           </TabList>
-
           <TabPanels>
             <TabPanel>
-              {/* <Login /> */}
+              <Login />
             </TabPanel>
             <TabPanel>
-              {/* <Signup /> */}
+              <Signup />
             </TabPanel>
           </TabPanels>
         </Tabs>
@@ -59,4 +58,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default Homepage; 
