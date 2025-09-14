@@ -1,38 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { Box } from "@chakra-ui/layout";
+import { useState } from "react";
+import Chatbox from "../components/Chatbox";
+import MyChats from "../components/MyChats";
+import SideDrawer from "../components/miscellaneous/SideDrawer";
+import { ChatState } from "../Context/ChatProvider";
 
-const ChatPage = () => {
-  // 1. Declare state at the top level of the component
-  const [chats, setChats] = useState([]);
-
-  // 2. Fetch data in a function
-  const fetchChats = async () => {
-    try {
-      const { data } = await axios.get('/chats');
-      setChats(data); // update state
-    } catch (error) {
-      console.error("Error fetching chats:", error);
-    }
-  };
-
-  // 3. useEffect to call fetchChats once on mount
-  useEffect(() => {
-    fetchChats();
-  }, []);
+const Chatpage = () => {
+  const [fetchAgain, setFetchAgain] = useState(false);
+  const { user } = ChatState();
 
   return (
-    <div>
-      <h1>Chat Page</h1>
-        {chats.length === 0 ? (
-        <p>No chats found bro</p>
-      ) : (
-        chats.map(chat => (
-          <div key={chat._id}>{chat.chatName}</div>
-        ))
-      )}
+    <div style={{ width: "100%" }}>
+      {user && <SideDrawer />}
+      <Box d="flex" justifyContent="space-between" w="100%" h="91.5vh" p="10px">
+        {user && <MyChats fetchAgain={fetchAgain} />}
+        {user && (
+          <Chatbox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+        )}
+      </Box>
     </div>
   );
 };
 
-export default ChatPage;
-
+export default Chatpage;
